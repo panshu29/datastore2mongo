@@ -6,6 +6,7 @@
    - If database name and collection name are both passed , then it will create a JSON file for the table in the database.
    - Use mongoimport cli tool to import the data to Mongodb. Ref: https://docs.mongodb.com/database-tools/mongoimport/ 
 
+![Alt text](https://github.com/anshubana/datastore2mongo/blob/main/screenshots/screenshot1.PNG?raw=true "Title")
 
 
 
