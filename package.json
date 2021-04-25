@@ -1,5 +1,5 @@
 {
-  "name": "datastoretomongo",
+  "name": "datastore2mongo",
   "version": "0.0.1",
   "description": "Datastore to Mongo Data Migration CLI Tool",
   "scripts": {

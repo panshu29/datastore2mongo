@@ -17,10 +17,10 @@ program.version("0.0.1")
 
             console.log('  Examples:');
             console.log('');
-            console.log('    $ npm run app -- -d vm-service');
-            console.log('    $ npm run app -- -d vm-service -c Projects');
+            console.log('    $ npm run app -- -d <namespace>');
+            console.log('    $ npm run app -- -d <namespace> -c <kind>');
             console.log('    $ npm run app -- --help');
-            console.log('    $ mongoimport --host "localhost" --port "27017" --jsonArray --db "vm-service" --collection "Projects"  --file "Projects.json" ');
+            console.log('    $ mongoimport --host "localhost" --port "27017" --jsonArray --db <namespace> --collection <kind>  --file "Projects.json" ');
             console.log('');
       })
       .option('-d, --db <db>', 'database name')
