@@ -7,7 +7,8 @@ const program = new Command();
 program.version("0.0.1")
       .on('--help', function () {
             console.log('');
-            console.log('  Info: This tool converts the data from GCP Datastore format to Mongodb format. ');
+            console.log('  Usage: This tool converts the data from GCP Datastore format to Mongodb JSON format and also generate a migration script \n ');
+            console.log('        which needs to be executed to import the JSON dataset into mongodb.');
             console.log('');
             console.log('   1. Enviorment variable "GOOGLE_APPLICATION_CREDENTIALS" must be set with the path to the service account.');
             console.log('   2. If database name(Namespace) is only passed , then it will create a JSON file for each table(Kind) in database.');
@@ -20,7 +21,7 @@ program.version("0.0.1")
             console.log('    $ npm run app -- -d <namespace>');
             console.log('    $ npm run app -- -d <namespace> -c <kind>');
             console.log('    $ npm run app -- --help');
-            console.log('    $ mongoimport --host "localhost" --port "27017" --jsonArray --db <namespace> --collection <kind>  --file "Projects.json" ');
+            console.log('    $ mongoimport --host localhost --port 27017 --jsonArray --db <namespace> --collection <kind>  --file <file.json> ');
             console.log('');
       })
       .option('-d, --db <db>', 'database name')
@@ -33,7 +34,7 @@ program.version("0.0.1")
                   api.exportAllCollections(options.db);
                   
             } else {
-                  console.log("<db> is the manditory arg. missing! 'npm run app -- --help' for more info/examples ")
+                  console.log("<db> is the manditory arg. missing! 'npm run app -- --help' for more info/examples.")
             }
       })
 program.parse(process.argv);
