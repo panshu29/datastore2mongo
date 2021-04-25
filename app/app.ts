@@ -7,12 +7,12 @@ const program = new Command();
 program.version("0.0.1")
       .on('--help', function () {
             console.log('');
-            console.log('  Info: This tool converts the data from GCP Datastore format to Mongo database format. ');
+            console.log('  Info: This tool converts the data from GCP Datastore format to Mongodb format. ');
             console.log('');
-            console.log('   1. Enviorment variable GOOGLE_APPLICATION_CREDENTIALS must set the path to the service account.');
-            console.log('   2. If only database name(Namespace) is passed , then it will create JSON file for each table(Kind) in database.');
-            console.log('   3. If only database name and collection name is passed , then it will create a JSON file for the table in the database.');
-            console.log('   4. Use mongoimport cli tool to import the data to Mongodb ');
+            console.log('   1. Enviorment variable "GOOGLE_APPLICATION_CREDENTIALS" must be set with the path to the service account.');
+            console.log('   2. If database name(Namespace) is only passed , then it will create a JSON file for each table(Kind) in database.');
+            console.log('   3. If database name and collection name are both passed , then it will create a JSON file for the table in the database.');
+            console.log('   4. Use mongoimport cli tool to import the data to Mongodb. Ref: https://docs.mongodb.com/database-tools/mongoimport/ ');
             console.log('');
 
             console.log('  Examples:');
@@ -20,7 +20,7 @@ program.version("0.0.1")
             console.log('    $ npm run app -- -d vm-service');
             console.log('    $ npm run app -- -d vm-service -c Projects');
             console.log('    $ npm run app -- --help');
-            console.log('    $ mongoimport --jsonArray --db [dbname] --collection [collectionname] --file filename.json');
+            console.log('    $ mongoimport --host "localhost" --port "27017" --jsonArray --db "vm-service" --collection "Projects"  --file "Projects.json" ');
             console.log('');
       })
       .option('-d, --db <db>', 'database name')
@@ -38,6 +38,4 @@ program.version("0.0.1")
       })
 program.parse(process.argv);
 
-//npm run app -- -d vm-service -c Projects
-//npm run app -- --help
 
