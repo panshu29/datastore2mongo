@@ -8,11 +8,11 @@ program.version("0.0.1")
       .on('--help', function () {
             console.log('');
             console.log('  Usage: This tool converts the data from GCP Datastore format to Mongodb JSON format and also generate a migration script \n ');
-            console.log('        which needs to be executed to import the JSON dataset into mongodb.');
+            console.log('         which needs to be executed to import the JSON dataset into mongodb.');
             console.log('');
             console.log('   1. Enviorment variable "GOOGLE_APPLICATION_CREDENTIALS" must be set with the path to the service account.');
-            console.log('   2. If database name(Namespace) is only passed , then it will create a JSON file for each table(Kind) in database.');
-            console.log('   3. If database name and collection name are both passed , then it will create a JSON file for the table in the database.');
+            console.log('   2. If database name(Namespace) is only passed as a argument , then it will create a JSON file for each table(Kind / collection) in database.');
+            console.log('   3. If database name and table name are both passe as arguments , then it will create a JSON file for that table in the database.');
             console.log('   4. Use mongoimport cli tool to import the data to Mongodb. Ref: https://docs.mongodb.com/database-tools/mongoimport/ ');
             console.log('');
 
