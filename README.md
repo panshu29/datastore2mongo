@@ -1,4 +1,4 @@
-# Datastore 2 Mongodb
+# Datastore To Mongodb data conversion and migration cli tool
 
 ##  Info: This tool converts the data from GCP Datastore format to Mongodb format.
    - Enviorment variable "GOOGLE_APPLICATION_CREDENTIALS" must be set with the path to the service account.
