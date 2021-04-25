@@ -1,4 +1,4 @@
-## Datastore2Mongo tool
+## Datastore2Mongo cli tool
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ###  It is a data conversion and migration cli tool.It converts the data from GCP Datastore format to Mongodb format.
    - Enviorment variable "GOOGLE_APPLICATION_CREDENTIALS" must be set with the path to the service account.
