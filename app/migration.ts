@@ -25,7 +25,8 @@ export async function exportACollection(dbname: string, collectionName: string, 
   const query = datastore.createQuery(dbname, collectionName);
   return new Promise<[]>((resolve, reject) => {
     query.run((err, entities, info) => {
-      entities.forEach(entity => {
+      if(entities)
+       entities.forEach(entity => {
         let mongoPart1 = {
           "name": entity[datastore.KEY].name
         }
