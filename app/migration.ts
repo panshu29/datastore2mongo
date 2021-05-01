@@ -6,16 +6,15 @@ var colors = require('colors');
 fse.mkdir('migration', { recursive: true }, (err) => {
   if (err) console.log(err);
 });
-
+let flag:boolean=true;
+let scriptWriter;
 export async function exportACollection(dbname: string, collectionName: string, host: string, port: string, auto: string, projectId: string) {
-  let scriptWriter;
-  let flag:boolean=true;
   if (auto === 'n' && flag===true) {
      scriptWriter = fse.createWriteStream('migration/migration-script.sh', {
       flags: 'a'
     })
     scriptWriter.write('#!/bin/bash');
-    scriptWriter.write('');
+    scriptWriter.write('\n');
     flag=false;
   }
   let list: any = [];
@@ -34,7 +33,7 @@ export async function exportACollection(dbname: string, collectionName: string, 
         list.push(mongoEntity);
       })
       resolve(list);
-    });
+    })
   }).then(data => {
     let filepath: string = "migration/" + dbname + "/" + collectionName + ".json";
     let jdata = JSON.stringify(data);
@@ -48,6 +47,7 @@ export async function exportACollection(dbname: string, collectionName: string, 
       console.log(colors.brightGreen("Script is written for the kind: ") + colors.brightYellow(collectionName));
     }
   })
+  
 }
 export async function exportAllDataOfaNamespace(dbname: string, host: string, port: string, auto: string, projectId: string) {
   const datastore = new Datastore({
@@ -57,22 +57,20 @@ export async function exportAllDataOfaNamespace(dbname: string, host: string, po
   const [entities] = await datastore.runQuery(query);
   const kinds = entities.map(entity => entity[datastore.KEY].name);
   if (auto === 'y') {
-    console.log(colors.yellow("Auto migration is on !"))
+    console.log(colors.yellow("Auto migration is ON ! namespace: "+colors.brightYellow(dbname))+' '+ colors.yellow("started....."));
   }
   else {
-    console.log(colors.yellow("Auto migration is off ! Use the generated script file 'migration-script.sh' to migrate manually."));
+    console.log(colors.yellow("Auto migration is OFF ! namespace: "+colors.brightYellow(dbname))+' '+ colors.yellow("started....."));
   }
-  console.log(colors.yellow("Namespace: ") + colors.brightYellow(dbname));
-  console.log(colors.brightRed("started....."));
   kinds.forEach(kind => {
     if (!kind.startsWith("__")) {
-      exportACollection(dbname, kind, host, port, auto, projectId);
+      exportACollection(dbname, kind, host, port, auto, projectId)
     }
   });
 }
 
 export async function exportAllDataOfAllNamespaces(host: string, port: string, auto: string, projectId: string) {
-  console.log(colors.brightRed("Migration of all namespaces started for projectId '" + projectId + "'"));
+  console.log(colors.brightRed("Migration of all namespaces started for the projectId '" + colors.brightYellow(projectId) + "'"));
   const datastore = new Datastore({
     projectId: projectId,
   });

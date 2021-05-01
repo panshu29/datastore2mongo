@@ -4,7 +4,7 @@
   "description": "A simple cli tool to migrate data from Datastore to Mongodb. It works well for small dataset less than a gb.",
   "scripts": {
     "tsc": "tsc",
-    "d2m": "tsc && node ./build/app.js "
+    "d2m": "node ./build/app.js "
   },
   "repository": {
     "type": "git",
