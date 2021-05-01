@@ -1,3 +1,9 @@
+/*	
+      Copyright	(c)	2021 All Rights Reserved. 
+      @author Anshubana Panda	
+      Node module: @loopback/cli
+      This file is licensed under the Apache License Version 2.0
+*/
 import { Datastore } from "@google-cloud/datastore";
 import * as fse from 'fs-extra';
 const nodeCmd = require('node-cmd');

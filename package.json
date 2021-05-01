@@ -1,7 +1,7 @@
 {
   "name": "datastore2mongo",
   "version": "0.0.1",
-  "description": "A simple cli tool to migrate data from Datastore to Mongodb. It works well for small dataset less than a gb.",
+  "description": "A simple cli tool to migrate data from Datastore to Mongodb.",
   "scripts": {
     "tsc": "tsc",
     "d2m": "node ./build/app.js "
@@ -24,6 +24,6 @@
     "@types/commander": "^2.9.1"
   },
   "bin": {
-    "dm": "./build/app.js"
+    "d2m": "./build/app.js"
   }
 }
