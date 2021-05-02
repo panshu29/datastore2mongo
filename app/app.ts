@@ -12,7 +12,7 @@ var colors = require('colors');
 import * as fse from 'fs-extra';
 
 const program = new Command();
-program.version('0.0.5', '-v, --vers', 'current version')
+program.version('0.0.6', '-v, --vers', 'current version')
       .description(colors.brightGreen('  It migrates the data from GCP Datastore to Mongodb automatically or \n  it prepares a migration script to be executed manually based on the choice given to the tool. \n  This project is in beta phase and please email me any bugs.'))
       .on('--help', function () {
             console.log('Examples:');
