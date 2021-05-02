@@ -12,7 +12,7 @@ var colors = require('colors');
 import * as fse from 'fs-extra';
 
 const program = new Command();
-program.version('0.0.4', '-v, --vers', 'current version')
+program.version('0.0.5', '-v, --vers', 'current version')
       .description(colors.brightGreen('  It migrates the data from GCP Datastore to Mongodb automatically or \n  it prepares a migration script to be executed manually based on the choice given to the tool. \n  This project is in beta phase and please email me any bugs.'))
       .on('--help', function () {
             console.log('Examples:');
@@ -25,7 +25,7 @@ program.version('0.0.4', '-v, --vers', 'current version')
       .option('-c, --collection <collection>', 'datastore kind (choices: "all", "<kind name>")')
       .option('-h, --host <host>', 'mongodb host name')
       .option('-p, --port <port>', 'mongodb port number')
-      .option('-a, --auto <auto>', '[y/n] migration strategy')
+      .option('-a, --auto <auto>', 'migration strategy (choices: "y", "n")')
       .option('-i, --projectid <projectid>', 'google cloud projectId')
       .action((options) => {
             if (options.db && options.collection && options.host  && options.port  && options.auto  && options.projectid ) {
