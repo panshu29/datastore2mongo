@@ -8,10 +8,6 @@ import { Datastore } from "@google-cloud/datastore";
 import * as fse from 'fs-extra';
 const nodeCmd = require('node-cmd');
 var colors = require('colors');
-
-fse.mkdir('migration', { recursive: true }, (err) => {
-  if (err) console.log(err);
-});
 let flag:boolean=true;
 let scriptWriter;
 export async function exportACollection(dbname: string, collectionName: string, host: string, port: string, auto: string, projectId: string) {

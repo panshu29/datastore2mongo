@@ -2,13 +2,14 @@
 
 /*	
       Copyright	(c)	2021 All Rights Reserved. 
-      @author Anshubana Panda	
+      @author: Anshubana Panda	
       Node module: @loopback/cli
       This file is licensed under the Apache License Version 2.0
 */
 import { Command } from 'commander';
 import * as api from './migration';
 var colors = require('colors');
+import * as fse from 'fs-extra';
 
 const program = new Command();
 program.version('0.0.1', '-v, --vers', 'current version')
@@ -20,10 +21,10 @@ program.version('0.0.1', '-v, --vers', 'current version')
             console.log(colors.yellow(' To auto migrate all kinds of all namespaces: ')+colors.brightYellow('npm run d2m -- -d all -i <projectId> -h <host> -p <port> -a y'));
             console.log('');
       })
-      .option('-d, --db <db>', 'namespace (choices: "all", "<namespace name>") ')
-      .option('-c, --collection <collection>', 'kind (choices: "all", "<kind name>")')
-      .option('-h, --host <host>', 'host name')
-      .option('-p, --port <port>', 'port number')
+      .option('-d, --db <db>', 'datastore namespace (choices: "all", "<namespace name>") ')
+      .option('-c, --collection <collection>', 'datastore kind (choices: "all", "<kind name>")')
+      .option('-h, --host <host>', 'mongodb host name')
+      .option('-p, --port <port>', 'mongodb port number')
       .option('-a, --auto <auto>', '[y/n] migration strategy')
       .option('-i, --projectid <projectid>', 'google cloud projectId')
       .action((options) => {
@@ -32,9 +33,14 @@ program.version('0.0.1', '-v, --vers', 'current version')
             } else if (options.db  && options.host  && options.port  && options.auto  && options.collection === 'all' && options.projectid ) {
                   api.exportAllDataOfaNamespace(options.db, options.host, options.port, options.auto, options.projectid);
             } else if (options.host  && options.port  && options.auto && options.db === 'all' && options.projectid) {
+                 if(options.auto==='n') {
+                       fse.mkdir('migration', { recursive: true }, (err) => {
+                        if (err) console.log(err);
+                      });
+                  }
                   api.exportAllDataOfAllNamespaces(options.host, options.port, options.auto, options.projectid);
             } else {
-                  console.log(colors.yellow("The manditory argument(s) missing! Please check help ('npm run d2m -- --help') or refer https://github.com/anshubana/datastore2mongo#readme for instuctions "));
+                  console.log(colors.yellow("Manditory argument(s) missing! Please check help ('npm run d2m -- --help') or refer https://github.com/anshubana/datastore2mongo#readme for instuctions "));
             }
       })
 try {
