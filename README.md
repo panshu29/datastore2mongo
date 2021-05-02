@@ -7,7 +7,7 @@
  npm i datastore2mongo -g
  ```
 ### Prerequisites
-- Set the enviornment varible "GOOGLE_APPLICATION_CREDENTIALS" with the path to service account credential
+- Set the enviornment varible "GOOGLE_APPLICATION_CREDENTIALS" with the path to service account credential file
 - download mongoimport tool from below link and add the location to the PATH enviornment variable of the system 
   https://www.mongodb.com/try/download/database-tools
 ### Screenshot
