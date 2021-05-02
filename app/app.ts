@@ -12,13 +12,13 @@ var colors = require('colors');
 import * as fse from 'fs-extra';
 
 const program = new Command();
-program.version('0.0.1', '-v, --vers', 'current version')
+program.version('0.0.3', '-v, --vers', 'current version')
       .description(colors.brightGreen('  It migrates the data from GCP Datastore to Mongodb automatically or \n  it prepares a migration script to be executed manually based on the choice given to the tool. \n  This project is in beta phase and please email me any bugs.'))
       .on('--help', function () {
             console.log('Examples:');
-            console.log(colors.brightBlue(' To auto migrate single kind: ')+colors.brightYellow('$ npm run datastore2mongo -- -d <namespace> -i <projectId> -h <host> -p <port> -a y'));
-            console.log(colors.brightBlue(' To auto migrate all kinds of a namespace: ')+colors.brightYellow('$ npm run datastore2mongo -- -d <namespace> -i <projectId> -c <kind> -h <host> -p <port> -a y '));
-            console.log(colors.brightBlue(' To auto migrate all kinds of all namespaces: ')+colors.brightYellow('npm run datastore2mongo -- -d all -i <projectId> -h <host> -p <port> -a y'));
+            console.log(colors.brightBlue(' To auto migrate single kind: ')+colors.brightYellow('$ datastore2mongo -- -d <namespace> -i <projectId> -h <host> -p <port> -a y'));
+            console.log(colors.brightBlue(' To auto migrate all kinds of a namespace: ')+colors.brightYellow('$ datastore2mongo -- -d <namespace> -i <projectId> -c <kind> -h <host> -p <port> -a y '));
+            console.log(colors.brightBlue(' To auto migrate all kinds of all namespaces: ')+colors.brightYellow('$ datastore2mongo -- -d all -i <projectId> -h <host> -p <port> -a y'));
             console.log('');
       })
       .option('-d, --db <db>', 'datastore namespace (choices: "all", "<namespace name>") ')
