@@ -41,7 +41,7 @@ program.version('0.0.1', '-v, --vers', 'current version')
                   api.exportAllDataOfAllNamespaces(options.host, options.port, options.auto, options.projectid);
             } else {
                   console.log(colors.red("Manditory argument(s) missing!")
-                  +colors.brightYellow("\nPlease check help ('npm run datastore2mongo -- --help') or refer https://github.com/anshubana/datastore2mongo#readme for instuctions "));
+                  +colors.brightYellow("\nPlease check help ('datastore2mongo --help') or refer https://github.com/anshubana/datastore2mongo#readme for instuctions "));
             }
       })
 try {
